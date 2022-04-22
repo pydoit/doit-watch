@@ -8,7 +8,7 @@ This is the *first* generation of `doit` `auto` command.
 
 It is based on:
 
-- Linux: `pyinotify <http://trac.dbzteam.org/pyinotify>`_
-- MAC:`macfsevents <http://pypi.python.org/pypi/MacFSEvents>`_
+- Linux: pyinotify <https://pypi.org/project/pyinotify>
+- MAC: macfsevents <https://pypi.python.org/pypi/MacFSEvents>`
 
 Unfortunately both of this projects are not maintained anymore.
