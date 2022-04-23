@@ -1,3 +1,85 @@
+### pep518
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+requires = ["flit_core >=3.7.1,<4"]
+build-backend = "flit_core.buildapi"
+### pep518
+
+### pep621
+[project]
+name = "doit-watch"
+authors = [
+    {name = "Eduardo Naufel Schettino", email = "schettino72@gmail.com"},
+]
+readme = "README.md"
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3",
+]
+requires-python = ">=3.8"
+dynamic = ["version", "description"]
+dependencies = [
+    "doit >=0.36",
+    "watchfiles >=0.13",
+]
+license = {file = "LICENSE"}
+
+[project.entry-points."doit.COMMAND"]
+watch = "doit_watch:Watch"
+
+[project.urls]
+Source = "https://github.com/pydoit/doit-watch"
+"Bug Tracker" = "https://github.com/pydoit/doit-watch/issues"
+
+[project.optional-dependencies]
+test = [
+    "pytest >=7",
+    "pytest-cov",
+]
+lint = [
+    "black",
+    "mypy==0.942",
+    "pyflakes",
+    "lxml",
+]
+build = [
+    "flit",
+]
+ci = [
+    "codecov",
+]
+### pep621
+
+### flit legacy
+[tool.flit.module]
+name = "doit_watch"
+
+[tool.flit.sdist]
+include = ["tests/"]
+### flit legacy
+
+### doit
+[tool.doit]
+backend = "sqlite3"
+default_tasks = ["setup", "fix", "check", "test", "build"]
+par_type = "thread"
+verbosity = 2
+### doit
+
+### mypy
+[tool.mypy]
+python_version = "3.8"
+warn_unused_configs = true
+cache_dir = "build/.mypy_cache"
+
+[[tool.mypy.overrides]]
+module = [
+    "doit",
+    "doit.*",
+]
+ignore_missing_imports = true
+### mypy
