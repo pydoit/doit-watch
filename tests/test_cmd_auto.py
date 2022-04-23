@@ -1,21 +1,12 @@
 import time
 from multiprocessing import Process
 
-import pytest
-
 from doit.cmdparse import DefaultUpdate
 from doit.task import Task
 from doit.cmd_base import TaskLoader2
 
-from doit_auto1 import filewatch
 from doit_auto1 import cmd_auto
 from .conftest import CmdFactory
-
-
-# skip all tests in this module if platform not supported
-platform = filewatch.get_platform_system()
-pytestmark = pytest.mark.skipif(
-    'platform not in filewatch.FileModifyWatcher.supported_platforms')
 
 
 class TestFindFileDeps(object):
