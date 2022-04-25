@@ -40,7 +40,7 @@ class FakeLoader(TaskLoader2):
         self.dep_file = dep_file
 
     def load_doit_config(self):
-        return {"verbosity": 2, "dep_file": self.dep_file}
+        return {"verbosity": 2, "dep_file": self.dep_file, "par_type": "thread"}
 
     def load_tasks(self, cmd, pos_args):
         return self.task_list
